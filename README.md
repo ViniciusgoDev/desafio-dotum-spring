@@ -16,10 +16,6 @@ git clone https://github.com/ViniciusgoDev/desafio-dotum-spring.git
 Execute a classe DesafioApplication.
 
 
-****************************************************************************************************************************
-Diversas funcionalidades ainda podem ser adicionadas, como a implementação de um identificador único para as contas.
-No entanto, neste momento, optei por seguir ao máximo o que foi solicitado no desafio.
-
 
 
 
