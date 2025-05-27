@@ -1,7 +1,8 @@
 package com.dotum.desafio.entity;
 
-import com.dotum.desafio.dtos.ContaDTO;
+import com.dotum.desafio.dtos.ContaDTORequest;
 import com.dotum.desafio.enums.TipoConta;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -28,8 +29,8 @@ public class Conta {
 
 
 
-    public Conta(@Valid ContaDTO dto) {
-        this.dataVencimento = dto.dataVencimemento();
+    public Conta(@Valid ContaDTORequest dto) {
+        this.dataVencimento = dto.dataVencimento();
         this.descricao = dto.descricao();
         this.tipoConta = dto.tipoConta();
         this.valor = dto.valor();

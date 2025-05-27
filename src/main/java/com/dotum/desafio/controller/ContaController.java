@@ -1,6 +1,6 @@
 package com.dotum.desafio.controller;
 
-import com.dotum.desafio.dtos.ContaDTO;
+import com.dotum.desafio.dtos.ContaDTORequest;
 import com.dotum.desafio.entity.Conta;
 import com.dotum.desafio.enums.TipoConta;
 import com.dotum.desafio.service.ContaService;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("conta")
+@RequestMapping("/conta")
 public class ContaController {
 
     private final ContaService service;
@@ -19,24 +19,24 @@ public class ContaController {
         this.service = service;
     }
 
-    @PostMapping("cadastrar")
-    public ResponseEntity<?> cadastrarConta(@RequestBody @Valid ContaDTO dto){
+    @PostMapping
+    public ResponseEntity<?> cadastrarConta(@RequestBody @Valid ContaDTORequest dto){
         return service.cadastrarNovaConta(dto);
     }
 
-    @GetMapping("listarTodas")
-    public List<Conta> listarTodas(){
-        return service.listarTodas();
+    @GetMapping
+    public List<Conta> buscarTodasContas(){
+        return service.buscarTodasContas();
     }
 
-    @GetMapping("obterTotal/{tipoConta}")
-    public Double obterValorTotal(@PathVariable TipoConta tipoConta){
-        return service.obterValorTotalEmAberto(tipoConta);
+    @GetMapping("/total/{tipoConta}")
+    public Double obterTotalPorTipo(@PathVariable TipoConta tipoConta){
+        return service.calcularTotalEmAbertoPorTipo(tipoConta);
     }
 
-    @GetMapping("obterSaldoGeral")
-    public Double resumoFinanceiro(){
-        return service.resumoDeContas();
+    @GetMapping("/saldo")
+    public Double obterSaldoGeral(){
+        return service.calcularSaldoFinanceiro();
     }
 
 }
